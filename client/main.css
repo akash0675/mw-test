@@ -2,3 +2,29 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+
+.login-form,
+.register-form,
+.loan-application-form {
+  display: flex;
+  justify-content: center;
+
+}
+
+.login-form > div,
+.register-form > div,
+.loan-application-form > div {
+  width: 24%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ant-1-tabs > div > .ant-tabs-nav-container {
+  display: flex;
+  justify-content: center;
+}
+
+.input-form {
+  margin-bottom: 8px;
+}
