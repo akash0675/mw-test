@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Button, Radio } from 'antd';
 import { useTracker } from 'meteor/react-meteor-data';
+import { withRouter } from 'react-router';
 import { UsersCollection } from '../api/users';
 
 class RegisterForm extends Component {
@@ -11,7 +12,8 @@ class RegisterForm extends Component {
             email: '',
             password: '',
             confirmPassword: '',
-            role: "BORROWER"
+            role: "BORROWER",
+            hasRegistered: false
         }
     }
 
@@ -27,7 +29,10 @@ class RegisterForm extends Component {
                     email: this.state.email,
                     password: this.state.password,
                     role: this.state.role
-                })
+                });
+                this.setState({
+                    hasRegistered: true
+                });
             }
         
     }
@@ -36,10 +41,20 @@ class RegisterForm extends Component {
         this.setState({ role: e.target.value });
     }
 
+    onClickLogin = () => {
+        this.props.history.push('/');
+    }
+
     render() {
         return (
             <div className="register-form">
-                <div>
+                {
+                    this.state.hasRegistered ? 
+                    <div>
+                        Thank you for registering with us click on the login tab to continue.
+                    </div>
+                    :
+                    <div>
                     <div className={"input-form"}>
                         <Input
                             placeholder={"Enter Name"}
@@ -84,9 +99,10 @@ class RegisterForm extends Component {
                         Register
                     </Button>
                 </div>
+                }
             </div>
         );
     }
 }
 
-export default RegisterForm;
+export default withRouter(RegisterForm);

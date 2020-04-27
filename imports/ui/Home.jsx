@@ -3,6 +3,7 @@ import { Tabs, Button } from 'antd';
 import { withRouter } from 'react-router';
 import BorrowerLoanList from './BorrowerLoanList';
 import LenderLoanList from './LenderLoanList';
+import AdminLoanList from './AdminLoanList';
 import LoanApplicationForm from './LoanApplicationForm';
 
 const { TabPane } = Tabs;
